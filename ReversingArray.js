@@ -27,4 +27,4 @@ function reverseArrayInPlace(array) {
   return array;
 }
 
-console.log(reverseArrayInPlace([1, 2, 3, 4, 5])); // (5) [5, 4, 3, 2, 1]
+console.log(reverseArrayInPlace([1, 2, 3, 4, 5])); // [5, 4, 3, 2, 1]

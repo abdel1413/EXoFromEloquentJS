@@ -8,9 +8,10 @@ function range(first, end) {
 }
 
 console.log(range(1, 10));
-//= first < end ? 1 : -1
 
 //Note this function  is from book
+//= first < end ? 1 : -1 default to avoid code breaking
+//if an invalid number is intered
 function rangeModified(first, end, step = first < end ? 1 : -1) {
   let rangeArray = [];
   if (step > 0) {
