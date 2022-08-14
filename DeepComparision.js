@@ -47,3 +47,49 @@ let obje2 = { here: { is: "an" }, object: 2 };
 
 console.log(deepComparison(obje1, { here: { is: "an" }, object: 2 })); //true
 console.log(deepComparison(obje2, { here: 1, object: 2 }));
+
+function deepCompa(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  //check if they are of the same type
+  if (typeof a != "object" || typeof b != "object") {
+    return false;
+  }
+
+  //check also if anyone is null
+  if (a == null || b == null) {
+    return false;
+  }
+
+  //check the length of keys propertes
+  let keyA = Object.keys(a);
+  let keyB = Object.keys(b);
+  if (keyA.length != keyB.length) {
+    return false;
+  }
+
+  //loop thru keyA and compare its element to that of
+  //keyB
+  for (let key of keyB) {
+    if (!keyA.includes(key)) {
+      return false;
+    }
+  }
+
+  // check if it is recursive
+  for (let k of keyA) {
+    if (!deepCompa(a[k], b[k])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let obje1 = { here: { is: "an" }, object: 2 };
+let obje2 = { here: { is: "an" }, object: 2 };
+console.log(deepCompa(obje1, obje2)); //true
+console.log(deepCompa(obje1, { here: { is: "an" }, object: 2 })); //true
+console.log(deepCompa(obje2, { here: 1, object: 2 })); //false
